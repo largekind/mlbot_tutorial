@@ -8,19 +8,13 @@ RUN apt-get update \
   && apt-get install -y \
     fonts-ipaexfont
 
-RUN cd /tmp \
-  && wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz \
-  && tar -xvf ta-lib-0.4.0-src.tar.gz \
-  && cd ta-lib \
-  && ./configure --prefix=/usr \
-  && (make -j4 || make) \
-  && make install \
-  && rm -rf /tmp/*
+RUN conda install -c conda-forge\
+  numpy\
+  lightgbm\
+  ta-lib
 
 RUN pip install --no-cache-dir \
-  ccxt==1.53.30 \
-  lightgbm==3.2.1 \
-  TA-Lib==0.4.21 \
+  ccxt\
   "git+https://github.com/richmanbtc/crypto_data_fetcher.git@v0.0.15#egg=crypto_data_fetcher"
 
 # matplotlibで日本語を使えるようにする
