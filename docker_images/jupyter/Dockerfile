@@ -18,6 +18,7 @@ RUN pip install --no-cache-dir \
   "git+https://github.com/richmanbtc/crypto_data_fetcher.git@v0.0.15#egg=crypto_data_fetcher"
 
 RUN pip install ccxt
+RUN pip install torch transformers
 
 # matplotlibで日本語を使えるようにする
 RUN sed -i '/font\.family/d' /opt/conda/lib/python3.9/site-packages/matplotlib/mpl-data/matplotlibrc
